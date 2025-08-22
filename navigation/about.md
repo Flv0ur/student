@@ -10,7 +10,7 @@ comments: true
 Here are some places I have lived.
 
 <comment>
-Flags are made using Wikipedia images
+Flags are made using Wikipedia images 
 </comment>
 
 <style>
@@ -99,17 +99,14 @@ Flags are made using Wikipedia images
 
 ### Journey through Life
 
-Here is what I did at those places
+This is the story of my life:
 
-- 🏫 Lots of Elementary Schools in Tucson, LA, Honolulu, and Glendale (CA)
-- 🏫 Middle and High School in Glendale (CA), Hoover High graduated '77
-- 🎓 Glendale CA Community College, UCLA Extension, LA Wilshire Computer Tech School '77 to '79
-- ⛪ England, London Missionary for Church of Jesus Christ of Latter-day Saints '79 to '81
-- 💼 Culver City, Glendale CA founder at Ashton-Tate, original PC's dBase 2 and 3 '82 to '87
-- 🎓 Eugene Oregon Undergraduate CompSci Degree at University of Oregon (Go Ducks!) '89 to '91
-- 💼 Eugene Oregon, founder and owner @ Microniche `88, Point Control CAD CAM developer '91 to '96
-- 🏢 San Diego CA Qualcomm, Satellite Comm and 1st Mobile OS (BREW) '96 to '19
-- 👨‍🏫 San Diego CA Teacher of Computer Science @ Del Norte High School San Diego '19 to present
+- I was born in Mexico and moved to San Diego when I was three months old
+- My first school was in poway at a school called Morning Creek
+- Then I moved to a place called Santee in 2nd grade at a school called Cartlon Oaks
+- In 5th grade, I moved back to Poway and attended a school named Monterey Ridge
+- I was finally able to get a spot in Design 39 which is the school where I spend middle school
+- Present day I am a freshman at Del Norte High School. Go Night Hawks!
 
 ### Culture, Family, and Fun
 
