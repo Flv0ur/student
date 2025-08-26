@@ -47,7 +47,7 @@ Flags are made using Wikipedia images
         border-radius: 5px;
     }
 </style>
-
+`
 <!-- This grid_container class is used by CSS styling and the id is used by JavaScript connection -->
 <div class="grid-container" id="grid_container">
     <!-- content will be added here by JavaScript -->
@@ -108,13 +108,12 @@ This is the story of my life:
 - I was finally able to get a spot in Design 39 which is the school where I spend middle school
 - Present day I am a freshman at Del Norte High School. Go Night Hawks!
 
-### Culture, Family, and Fun
+### Family
 
-Everything for me, as for many others, revolves around family and faith.
-
-- My mother told me that I was Danish, English. and Irish, here is my researched [family tree]({{site.baseurl}}/images/about/familytree.png)
-- My family is pretty big as I have been married twice, my 1st wife passed away.  We have had 5 kids, 4 adopted by me, 1 biological.  Plus, there are three grandkids.  My name to my grandkids is Abuilito.
-- The gallery of pics has some of my family, fun, culture and faith memories.
+- I know that I am 87% Mexican and possible 13% Spanish as I know from my family tree.
+- It is possible that my great grandpa was from Spain.
+- I live at home with my Dad, Mom, and my sister.
+- We travel to Mexico every year so we are connected to both American and Mexican culture
 
 <comment>
 Gallery of Pics, scroll to the right for more ...
