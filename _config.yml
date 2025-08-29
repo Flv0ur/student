@@ -5,4 +5,8 @@ github_username: Flv0ur
 github_repo: "student" 
 baseurl: "/student" 
 future: true
-remote_theme: jekyll/slate
+remote_theme: pages-themes/slate
+plugins:
+  - jekyll-remote-theme
+  - jekyll-feed
+  - jekyll-seo-tag
