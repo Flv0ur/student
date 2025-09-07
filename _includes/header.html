@@ -1,0 +1,35 @@
+<header class="site-header">
+  <div class="wrapper">
+
+    <!-- Site title / logo -->
+    <h1 class="site-title">
+      <a href="{{ site.baseurl }}/">{{ site.title }}</a>
+    </h1>
+
+    <!-- Main navigation -->
+    <nav class="site-nav">
+      <ul>
+        {% for page in site.header_pages %}
+          {% assign page_title = page | split: '/' | last | split: '.' | first %}
+          <li>
+            <a href="{{ site.baseurl }}/{{ page | remove: '.md' | remove: '.html' }}">{{ page_title | capitalize }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <!-- Social links -->
+    <div class="site-social">
+      <ul>
+        {% for link in site.social_links %}
+          <li>
+            <a href="{{ link.user_url }}" target="_blank" rel="noopener noreferrer">
+              {{ link.platform | capitalize }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+  </div>
+</header>
