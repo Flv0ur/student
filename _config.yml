@@ -3,7 +3,7 @@ description: "Class of 2026"
 owner_name: Santiago Alvarado Puente
 github_username: Flv0ur
 github_repo: "student"
-baseurl: "/student"
+baseurl: ""
 future: true
 
 # Change theme here:
