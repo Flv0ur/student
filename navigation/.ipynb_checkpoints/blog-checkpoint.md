@@ -1,0 +1,49 @@
+---
+layout: blogs 
+title: Blogs
+search_exclude: true
+permalink: /blogs/
+---
+
+# Changed the theme in config.yml
+
+title: OpenCoding
+description: "Class of 2026"
+owner_name: Santiago Alvarado Puente
+github_username: Flv0ur
+github_repo: "student"
+baseurl: ""
+future: true
+
+# Change theme here:
+# For Midnight:
+#remote_theme: pages-themes/midnight@v0.2.0
+# For Cayman, uncomment this line instead:
+remote_theme: pages-themes/cayman@v0.2.0
+# For Architect, uncomment this line instead:
+#remote_theme: pages-themes/architect@v0.2.0
+# For Hacker, uncomment this line instead:
+#remote_theme: pages-themes/hacker@v0.2.0
+# For Slate, uncomment this line instead:
+#remote_theme: pages-themes/slate@v0.2.0
+# For Modernist, uncomment this line instead:
+#remote_theme: pages-themes/modernist@v0.2.0
+
+# Plugins required for remote themes and caching includes
+plugins:
+  - jekyll-remote-theme
+  - jekyll-include-cache
+header_pages:
+  - navigation/blog.md
+  - navigation/search.md
+  - navigation/about.md
+  - navigation/logintoolkit.md
+
+# Social links — works if theme supports it, otherwise used in your own footer/header includes
+social_links:
+  - platform: github
+    user_url: "https://github.com/open-coding-society"
+  - platform: x
+    user_url: "https://x.com/Open_Coding"
+  - platform: youtube
+    user_url: "https://www.youtube.com/@OpenCodingSociety"
