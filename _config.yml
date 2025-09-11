@@ -1,4 +1,4 @@
-title: Open Coding
+title: Open Coding Del Norte Highschool
 description: "Class of 2026"
 owner_name: Santiago Alvarado Puente
 github_username: Flv0ur
@@ -10,11 +10,11 @@ future: true
 # For Midnight:
 #remote_theme: pages-themes/midnight@v0.2.0
 # For Cayman, uncomment this line instead:
-remote_theme: pages-themes/cayman@v0.2.0
+#remote_theme: pages-themes/cayman@v0.2.0
 # For Architect, uncomment this line instead:
 #remote_theme: pages-themes/architect@v0.2.0
 # For Hacker, uncomment this line instead:
-#remote_theme: pages-themes/hacker@v0.2.0
+remote_theme: pages-themes/hacker@v0.2.0
 # For Slate, uncomment this line instead:
 #remote_theme: pages-themes/slate@v0.2.0
 # For Modernist, uncomment this line instead:
