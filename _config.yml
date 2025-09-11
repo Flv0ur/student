@@ -2,9 +2,9 @@ title: Open Coding Del Norte Highschool
 description: "Class of 2026"
 owner_name: Santiago Alvarado Puente
 github_username: Flv0ur
-#github_repo: "student"
-baseurl: ""
-#future: true
+github_repo: "student"
+baseurl: "/student"
+future: true
 url: "https://flv0ur.github.io/"
 
 # Change theme here:
