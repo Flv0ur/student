@@ -9,13 +9,14 @@ permalink: /blogs/
 ```yaml
 #Changed the theme in config.yml
 
-title: OpenCoding
+title: Open Coding
 description: "Class of 2026"
 owner_name: Santiago Alvarado Puente
 github_username: Flv0ur
 github_repo: "student"
-baseurl: ""
+baseurl: "/student"
 future: true
+url: "https://flv0ur.github.io/"
 
 # Change theme here:
 # For Midnight:
