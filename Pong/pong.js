@@ -236,7 +236,7 @@ function draw(){
   ctx.fillRect(20, leftY, paddleWidth, paddleHeight);
   ctx.fillStyle = '#f00';
   ctx.fillRect(canvas.width - 20 - paddleWidth, rightY, paddleWidth, paddleHeight);
-w
+
   // Bullets
   ctx.fillStyle = '#ff0';
   bullets.forEach(b => ctx.fillRect(b.x - 4, b.y - 4, 8, 8));
