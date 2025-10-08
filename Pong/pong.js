@@ -1,5 +1,7 @@
 // === Dynamic DOM & Styles =========================================
-const style = document.createElement('style');
+// Create a <style> element and add CSS rules as a string (String data type)
+const style = document.createElement('style'); // variable holds a DOM element
+// back-tick template String
 style.textContent = `
   body {
     margin: 0;
@@ -29,14 +31,16 @@ style.textContent = `
     color: #0f0;
   }
 `;
-document.head.appendChild(style);
+document.head.appendChild(style); // DOM method call (function), side-effect operation
 
+// Create and configure DOM elements (Objects in memory)
 const scoreboard = document.createElement('div');
 scoreboard.id = 'scoreboard';
-scoreboard.textContent = '0 : 0';
+scoreboard.textContent = '0 : 0'; // String literal
 
 const cooldowns = document.createElement('div');
 cooldowns.id = 'cooldowns';
+// template String with HTML
 cooldowns.innerHTML = `
   <div id="leftCD">Left Gun: Ready</div>
   <div id="rightCD">Right Gun: Ready</div>
@@ -55,19 +59,20 @@ winnerMsg.id = 'winner';
 
 const canvas = document.createElement('canvas');
 canvas.id = 'gameCanvas';
-canvas.width = 800;
+canvas.width = 800;   // Number data type
 canvas.height = 500;
 
-document.body.append(scoreboard, cooldowns, controls, winnerMsg, canvas);
+document.body.append(scoreboard, cooldowns, controls, winnerMsg, canvas); // append multiple nodes
 
 // === Game Variables ================================================
+// Variables store numbers, booleans, and references (data types: Number, Boolean)
 const ctx = canvas.getContext('2d');
 
-let leftScore = 0, rightScore = 0;
-let running = false, modeAI = false;
+let leftScore = 0, rightScore = 0;  // Numbers
+let running = false, modeAI = false; // Booleans
 
-const paddleWidth = 12, paddleHeight = 80;
-let leftY = canvas.height/2 - paddleHeight/2;
+const paddleWidth = 12, paddleHeight = 80; // Numbers
+let leftY = canvas.height/2 - paddleHeight/2; // Math expression
 let rightY = canvas.height/2 - paddleHeight/2;
 let paddleSpeed = 10;
 
@@ -75,58 +80,67 @@ let ballX = canvas.width/2, ballY = canvas.height/2;
 let ballSpeedX = 6, ballSpeedY = 6;
 const ballRadius = 10;
 
-const bullets = [];
+const bullets = []; // Array to hold bullet objects
+
 const bulletSpeed = 8;
 const freezeTime = 5000;
 const gunCooldown = 3000;
-let leftGunReady = true, rightGunReady = true;
-let leftFreeze = false, rightFreeze = false;
+let leftGunReady = true, rightGunReady = true; // Booleans
+let leftFreeze = false, rightFreeze = false;   // Booleans
 
-const keys = {};
+const keys = {}; // Object used as a map of pressed keys
 const winScore = 5;
 
 // === Sounds ========================================================
+// Construct Audio objects (built-in class)
 const sndPaddle = new Audio('https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg');
 const sndScore  = new Audio('https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg');
 const sndShoot  = new Audio('https://actions.google.com/sounds/v1/cartoon/metallic_twang.ogg');
 
 // === DOM Event Listeners ===========================================
-document.addEventListener('keydown', e => keys[e.key] = true);
-document.addEventListener('keyup',   e => keys[e.key] = false);
+// Arrow functions and event listeners (functions as first-class objects)
+document.addEventListener('keydown', e => keys[e.key] = true);   // set Boolean true
+document.addEventListener('keyup',   e => keys[e.key] = false);  // set Boolean false
 
 document.getElementById('start').onclick = () => {
-  if (!running) {
+  // Conditional: only start if not already running
+  if (!running) {                  // Logical NOT operator
     running = true;
-    requestAnimationFrame(gameLoop);
+    requestAnimationFrame(gameLoop); // Built-in browser iteration via callback
   }
 };
-document.getElementById('pause').onclick = () => running = false;
+document.getElementById('pause').onclick = () => running = false; // assignment operation
 document.getElementById('reset').onclick = resetGame;
 document.getElementById('mode').onclick = () => {
-  modeAI = !modeAI;
-  document.getElementById('mode').textContent = `Mode: ${modeAI ? '1vAI' : '1v1'}`;
+  modeAI = !modeAI; // Boolean NOT toggles value (logical operator)
+  document.getElementById('mode').textContent = `Mode: ${modeAI ? '1vAI' : '1v1'}`; // conditional (ternary)
   resetGame();
 };
 
 // === Game Functions ================================================
+// Function definitions with side effects and returns where needed
+
 function resetGame(){
+  // multiple assignments (operations)
   leftScore = 0; rightScore = 0;
   leftY = canvas.height/2 - paddleHeight/2;
   rightY = canvas.height/2 - paddleHeight/2;
   winnerMsg.textContent = '';
   running = false;
-  resetBall(); updateScoreboard();
+  resetBall(); 
+  updateScoreboard();
 }
 
 function resetBall(){
+  // Random direction using Math.random() and conditional operator
   ballX = canvas.width/2;
   ballY = canvas.height/2;
-  ballSpeedX = (Math.random() > 0.5 ? 6 : -6);
+  ballSpeedX = (Math.random() > 0.5 ? 6 : -6); // ternary conditional
   ballSpeedY = (Math.random() > 0.5 ? 6 : -6);
 }
 
 function updateScoreboard(){
-  scoreboard.textContent = `${leftScore} : ${rightScore}`;
+  scoreboard.textContent = `${leftScore} : ${rightScore}`; // template String
 }
 
 function declareWinner(winner){
@@ -135,12 +149,15 @@ function declareWinner(winner){
 }
 
 function shootBullet(isLeft){
-  if(isLeft && leftGunReady){
-    bullets.push({x: 20 + paddleWidth, y: leftY + paddleHeight/2, vx: bulletSpeed, from:'left'});
+  // Nested conditionals check side and cooldown
+  if(isLeft && leftGunReady){ // Boolean AND
+    bullets.push({x: 20 + paddleWidth, y: leftY + paddleHeight/2, vx: bulletSpeed, from:'left'}); // push into Array
     leftGunReady = false;
     document.getElementById('leftCD').textContent = 'Left Gun: Cooldown';
     sndShoot.play();
-    setTimeout(()=>{ leftGunReady = true;
+    // setTimeout demonstrates asynchronous callback
+    setTimeout(()=>{ 
+      leftGunReady = true;
       document.getElementById('leftCD').textContent = 'Left Gun: Ready';
     }, gunCooldown);
   }
@@ -149,17 +166,20 @@ function shootBullet(isLeft){
     rightGunReady = false;
     document.getElementById('rightCD').textContent = 'Right Gun: Cooldown';
     sndShoot.play();
-    setTimeout(()=>{ rightGunReady = true;
+    setTimeout(()=>{ 
+      rightGunReady = true;
       document.getElementById('rightCD').textContent = 'Right Gun: Ready';
     }, gunCooldown);
   }
 }
 
 function handleInput(){
-  if(keys['w'] && leftY > 0 && !leftFreeze) leftY -= paddleSpeed;
+  // Control flow with conditionals
+  if(keys['w'] && leftY > 0 && !leftFreeze) leftY -= paddleSpeed;  // math operation
   if(keys['s'] && leftY < canvas.height - paddleHeight && !leftFreeze) leftY += paddleSpeed;
 
   if(modeAI){
+    // Simple AI: uses math and random error
     if(!rightFreeze){
       const center = rightY + paddleHeight/2;
       const error = (Math.random() - 0.5) * 20;
@@ -171,14 +191,18 @@ function handleInput(){
     if(keys['ArrowDown'] && rightY < canvas.height - paddleHeight && !rightFreeze) rightY += paddleSpeed;
   }
 
+  // Shooting checks
   if(keys['d'])        { shootBullet(true);  keys['d'] = false; }
   if(keys['ArrowLeft']){ shootBullet(false); keys['ArrowLeft'] = false; }
 }
 
 function update(){
-  ballX += ballSpeedX; ballY += ballSpeedY;
-  if(ballY - ballRadius < 0 || ballY + ballRadius > canvas.height) ballSpeedY *= -1;
+  // Ball movement math expressions
+  ballX += ballSpeedX; 
+  ballY += ballSpeedY;
+  if(ballY - ballRadius < 0 || ballY + ballRadius > canvas.height) ballSpeedY *= -1; // logical OR
 
+  // Paddle collisions
   if(ballX - ballRadius < 20 + paddleWidth && ballY > leftY && ballY < leftY + paddleHeight){
     ballSpeedX *= -1; ballX = 20 + paddleWidth + ballRadius;
     sndPaddle.play();
@@ -188,9 +212,10 @@ function update(){
     sndPaddle.play();
   }
 
+  // Scoring conditionals
   if(ballX < 0){
     rightScore++; updateScoreboard(); sndScore.play();
-    if(rightScore >= winScore) declareWinner('Right Player');
+    if(rightScore >= winScore) declareWinner('Right Player'); // nested condition
     else resetBall();
   }
   if(ballX > canvas.width){
@@ -199,10 +224,12 @@ function update(){
     else resetBall();
   }
 
+  // Iterate backwards through bullets Array (iteration)
   for (let i = bullets.length - 1; i >= 0; i--) {
     const b = bullets[i];
     b.x += b.vx;
 
+    // Collision detection with conditionals
     if(b.from==='left'  && b.x + 5 >= canvas.width - 20 - paddleWidth && b.y > rightY && b.y < rightY + paddleHeight){
       rightFreeze = true; setTimeout(()=>{rightFreeze=false;}, freezeTime); bullets.splice(i,1);
     }
@@ -216,7 +243,7 @@ function update(){
 function draw(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
 
-  // Center dashed line
+  // Draw center line with canvas API
   ctx.strokeStyle = '#fff';
   ctx.setLineDash([5, 15]);
   ctx.beginPath();
@@ -235,17 +262,18 @@ function draw(){
   ctx.fillStyle = '#0f0';
   ctx.fillRect(20, leftY, paddleWidth, paddleHeight);
   ctx.fillStyle = '#f00';
-  ctx.fillRect(canvas.width - 20 - paddleWidth, rightY, paddleWidth, paddleHeight);
+  ctx.fillRect(canvas.width - 20 - paddleWidth, rightY, paddleHeight, paddleHeight);
 
   // Bullets
   ctx.fillStyle = '#ff0';
-  bullets.forEach(b => ctx.fillRect(b.x - 4, b.y - 4, 8, 8));
+  bullets.forEach(b => ctx.fillRect(b.x - 4, b.y - 4, 8, 8)); // forEach = iteration
 }
+
 function gameLoop(){
-  if (!running) return; // stops loop when paused
+  if (!running) return; // Conditional early exit
   handleInput();
   update();
   draw();
-  requestAnimationFrame(gameLoop);
+  requestAnimationFrame(gameLoop); // recursion-like continuous iteration
 }
-// Start the game loop
+// End of code
